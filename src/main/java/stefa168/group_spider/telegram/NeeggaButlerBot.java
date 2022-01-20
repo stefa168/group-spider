@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.DefaultBotOptions;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
+import org.telegram.telegrambots.meta.api.objects.Message;
 import org.telegram.telegrambots.meta.api.objects.Update;
 import org.telegram.telegrambots.meta.api.objects.User;
 import stefa168.group_spider.data.model.TelegramUser;
@@ -36,17 +37,16 @@ public class NeeggaButlerBot extends TelegramLongPollingBot {
     @Override
     public void onUpdateReceived(Update update) {
         logger.info(update.toString());
-        Optional<User> optionalSender = Optional.ofNullable(update.getMessage().getFrom());
+        Optional<Message> optionalMessage = Optional.ofNullable(update.getMessage());
 
-        if (optionalSender.isEmpty()) {
+        if (optionalMessage.isEmpty()) {
             return;
         }
 
-        User from = optionalSender.orElseThrow();
+        Message message = optionalMessage.orElseThrow();
+        User from = message.getFrom();
 
-        System.out.println(from.getUserName());
-
-        Long messageTimestamp = Long.valueOf(update.getMessage().getDate());
+        Long messageTimestamp = Long.valueOf(message.getDate());
         // https://dzone.com/articles/java-string-formatting
         String name = String.format("%s %s",
                                     from.getFirstName(),
