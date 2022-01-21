@@ -1,0 +1,25 @@
+version: '3'
+services:
+  butler:
+    container_name: butler
+    build: .
+    image: neegga-butler:latest
+    ports:
+      - '443:443'
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+      botToken: ${botToken}
+    depends_on:
+      - db-bot
+  db-bot:
+    container_name: database
+    image: postgres:alpine
+    ports:
+      - '5432:5432'
+    environment:
+      POSTGRES_PASSWORD: 1234
+    volumes:
+      - postgres-db:/var/lib/postgresql/data
+
+volumes:
+  postgres-db:

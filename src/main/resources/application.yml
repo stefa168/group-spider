@@ -7,3 +7,9 @@ spring:
     database-platform: org.hibernate.dialect.PostgreSQL95Dialect
     hibernate:
       ddl-auto: update
+---
+spring:
+  profiles: docker
+
+  datasource:
+    url: jdbc:postgresql://db-bot:5432/postgres
