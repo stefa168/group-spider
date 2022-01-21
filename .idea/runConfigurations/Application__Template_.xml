@@ -1,0 +1,20 @@
+<component name="ProjectRunConfigurationManager">
+  <configuration default="false" name="Application (Template)" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot">
+    <module name="group-spider" />
+    <extension name="coverage">
+      <pattern>
+        <option name="PATTERN" value="stefa168.group_spider.*" />
+        <option name="ENABLED" value="true" />
+      </pattern>
+    </extension>
+    <option name="SPRING_BOOT_MAIN_CLASS" value="stefa168.group_spider.Application" />
+    <option name="ALTERNATIVE_JRE_PATH" />
+    <envs>
+      <env name="botToken" value="&lt;token here&gt;" />
+    </envs>
+    <method v="2">
+      <option name="Make" enabled="true" />
+      <option name="RunConfigurationTask" enabled="true" run_configuration_name="docker-compose.yml.database: Compose Deployment" run_configuration_type="docker-deploy" />
+    </method>
+  </configuration>
+</component>
